@@ -386,6 +386,11 @@ namespace Castle.Facilities.QuartzIntegration {
             return _scheduler.ScheduleJob(trigger);
         }
 
+        public void ScheduleJob(IJobDetail jobDetail, Quartz.Collection.ISet<ITrigger> triggersForJob, bool replace)
+        {
+            _scheduler.ScheduleJob(jobDetail, triggersForJob, replace);
+        }
+
         /// <summary>
         /// Schedule all of the given jobs with the related set of triggers.
         /// </summary>
@@ -396,7 +401,7 @@ namespace Castle.Facilities.QuartzIntegration {
         ///             parameter is not set to true then an exception will be thrown.
         /// </para>
         /// </remarks>
-        public void ScheduleJobs(IDictionary<IJobDetail, IList<ITrigger>> triggersAndJobs, bool replace)
+        public void ScheduleJobs(IDictionary<IJobDetail, Quartz.Collection.ISet<ITrigger>> triggersAndJobs, bool replace)
         {
             _scheduler.ScheduleJobs(triggersAndJobs, replace);
         }
